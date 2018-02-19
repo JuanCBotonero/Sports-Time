@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>Login_Servlet</servlet-name>
+        <servlet-class>Controlador.Login_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Coach_Servlet</servlet-name>
+        <servlet-class>Controlador.Coach_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Athlete_Servlet</servlet-name>
+        <servlet-class>Controlador.Athlete_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Attendance_Servlet</servlet-name>
+        <servlet-class>Controlador.Attendance_Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login_Servlet</servlet-name>
+        <url-pattern>/Login_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Coach_Servlet</servlet-name>
+        <url-pattern>/Coach_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Athlete_Servlet</servlet-name>
+        <url-pattern>/Athlete_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Attendance_Servlet</servlet-name>
+        <url-pattern>/Attendance_Servlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
