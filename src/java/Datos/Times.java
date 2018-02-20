@@ -11,17 +11,27 @@ package Datos;
  */
 public class Times {
 
+    private int ID_Time;
     private int ID_Routing;
     private String ID_Athele;
     private String time;
 
-    public Times(int ID_Routing, String ID_Athele, String time) {
+    public Times(int ID_Time, int ID_Routing, String ID_Athele, String time) {
+        this.ID_Time = ID_Time;
         this.ID_Routing = ID_Routing;
         this.ID_Athele = ID_Athele;
         this.time = time;
     }
 
     public Times() {
+    }
+
+    public int getID_Time() {
+        return ID_Time;
+    }
+
+    public void setID_Time(int ID_Time) {
+        this.ID_Time = ID_Time;
     }
 
     public int getID_Routing() {
@@ -47,5 +57,7 @@ public class Times {
     public void setTime(String time) {
         this.time = time;
     }
+
+  
 
 }

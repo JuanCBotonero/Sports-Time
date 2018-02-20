@@ -51,8 +51,9 @@ function cronometro1() {
         }
         Horas1.innerHTML = horas1;
     }
-    
+
     final1 = horas1 + ":" + minutos1 + ":" + segundos1 + ":" + centesimas1;
+   
     return final1;
 
 }
@@ -113,11 +114,11 @@ function cronometro2() {
         }
         Horas2.innerHTML = horas2;
     }
-    
+
     final2 = horas2 + ":" + minutos2 + ":" + segundos2 + ":" + centesimas2;
     return final2;
-    
-    
+
+
 }
 
 var centesimas3 = 0;
@@ -173,7 +174,7 @@ function cronometro3() {
         }
         Horas3.innerHTML = horas3;
     }
-    
+
     final3 = horas3 + ":" + minutos3 + ":" + segundos3 + ":" + centesimas3;
     return final3;
 
@@ -232,7 +233,7 @@ function cronometro4() {
         }
         Horas4.innerHTML = horas4;
     }
-    
+
     final4 = horas4 + ":" + minutos4 + ":" + segundos4 + ":" + centesimas4;
     return final4;
 }
@@ -349,7 +350,7 @@ function cronometro6() {
         }
         Horas6.innerHTML = horas6;
     }
-    
+
     final6 = horas6 + ":" + minutos6 + ":" + segundos6 + ":" + centesimas6;
     return final6;
 }

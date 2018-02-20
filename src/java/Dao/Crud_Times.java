@@ -27,15 +27,19 @@ public class Crud_Times {
     public boolean insert(Times t) throws SQLException {
         boolean result = false;
         Connection connection = Conexion.getConnection();
-        String query = " insert into times (ID_Routing,ID_Athele,Time1)" + "values (?,?,?)";
+   
+        
+        
+        String query = " insert into times (ID_Time,ID_Routing,ID_Athele,Time1)" + "values (?,?,?,?)";
         PreparedStatement preparedStmt = null;
 
         try {
 
             preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setInt(1, t.getID_Routing());
-            preparedStmt.setString(2, t.getID_Athele());
-            preparedStmt.setString(3, t.getTime());
+            preparedStmt.setInt(1, t.getID_Time());
+            preparedStmt.setInt(2, t.getID_Routing());
+            preparedStmt.setString(3, t.getID_Athele());
+            preparedStmt.setString(4, t.getTime());
 
 
             result = preparedStmt.execute();

@@ -11,6 +11,7 @@ package Datos;
  */
 public class Routing {
 
+    private int Number;
     private String Quantity;
     private String Distance;
     private String Style;
@@ -24,6 +25,15 @@ public class Routing {
     public Routing() {
     }
 
+    public int getNumber() {
+        return Number;
+    }
+
+    public void setNumber(int Number) {
+        this.Number = Number;
+    }
+
+        
     public String getQuantity() {
         return Quantity;
     }

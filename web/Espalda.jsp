@@ -14,9 +14,8 @@
             var Athele3 = cronometro4();
             var Athele4 = cronometro5();
             var Athele5 = cronometro6();
-
-            alert(Cantidad);
-
+            alert(Athele1);
+         
             $.ajax({
                 url: "Espalda_Servlet",
                 data: {Cantidad: Cantidad, Distancia: Distancia, Style: Style, Athele0: Athele0, Athele1: Athele1, Athele2: Athele2, Athele3: Athele3, Athele4: Athele4, Athele5: Athele5},
