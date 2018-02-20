@@ -32,13 +32,13 @@
                         success: function (respuesta) {
 
                             console.log(respuesta);
-                            
+
 
                             if (respuesta.trim() == "Entrenador") {
-                             
-                                window.location.replace("Coach.jsp"); 
-                                
-                                
+
+                                window.location.replace("Coach.jsp");
+
+
                             } else if (respuesta.trim() == "Deportista") {
                                 window.location.replace("Athlete.jsp");
                             }
@@ -84,7 +84,7 @@
                     });
                 });
             });
-                
+
         </script>
 
 

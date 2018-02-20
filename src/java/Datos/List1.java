@@ -11,6 +11,7 @@ package Datos;
  */
 public class List1 {
 
+    private String Fecha;
     private String Athele0;
     private String Athele1;
     private String Athele2;
@@ -27,6 +28,17 @@ public class List1 {
         this.Athele5 = Athele5;
     }
 
+    public List1() {
+    }
+
+    public String getFecha() {
+        return Fecha;
+    }
+
+    public void setFecha(String Fecha) {
+        this.Fecha = Fecha;
+    }
+            
     public String getAthele0() {
         return Athele0;
     }

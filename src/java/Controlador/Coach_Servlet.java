@@ -17,6 +17,10 @@ public class Coach_Servlet extends HttpServlet {
 
         response.setContentType("text/html; charset=iso-8859-1");
         PrintWriter out = response.getWriter();
+        
+        String temp = request.getParameter("Temp");
+        
+        
         out.println("xxx");
 
     }

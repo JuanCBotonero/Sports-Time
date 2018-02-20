@@ -16,6 +16,22 @@
         <servlet-name>Attendance_Servlet</servlet-name>
         <servlet-class>Controlador.Attendance_Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Management_Servlet</servlet-name>
+        <servlet-class>Controlador.Management_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Espalda_Servlet</servlet-name>
+        <servlet-class>Controlador.Espalda_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Libre_Servlet</servlet-name>
+        <servlet-class>Controlador.Libre_Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Pecho_Servlet</servlet-name>
+        <servlet-class>Controlador.Pecho_Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login_Servlet</servlet-name>
         <url-pattern>/Login_Servlet</url-pattern>
@@ -31,6 +47,22 @@
     <servlet-mapping>
         <servlet-name>Attendance_Servlet</servlet-name>
         <url-pattern>/Attendance_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Management_Servlet</servlet-name>
+        <url-pattern>/Management_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Espalda_Servlet</servlet-name>
+        <url-pattern>/Espalda_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Libre_Servlet</servlet-name>
+        <url-pattern>/Libre_Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pecho_Servlet</servlet-name>
+        <url-pattern>/Pecho_Servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
