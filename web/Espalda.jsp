@@ -1,3 +1,7 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="Dao.Crud_Coach"%>
 <%@page import="Dao.Crud_Athele"%>
 <%@page import="Dao.Crud_List"%>
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
@@ -15,7 +19,7 @@
             var Athele4 = cronometro5();
             var Athele5 = cronometro6();
             alert(Athele1);
-         
+
             $.ajax({
                 url: "Espalda_Servlet",
                 data: {Cantidad: Cantidad, Distancia: Distancia, Style: Style, Athele0: Athele0, Athele1: Athele1, Athele2: Athele2, Athele3: Athele3, Athele4: Athele4, Athele5: Athele5},
@@ -39,28 +43,54 @@
 
 
 <div id="login1">
-  
-        <ul>
-            <li>
-                <input id="Cantidad" type="text" placeholder="Cantidad" />
-            </li>
-            <li>
-                <input id="Distancia" type="text" placeholder="Distancia" />
-            </li>
-            <li>
-                <input id="Style" type="text" placeholder="Style" />
-            </li>
-        </ul>
-  
+
+    <ul>
+        <li>
+            <input id="Cantidad" type="text" placeholder="Cantidad" />
+        </li>
+        <li>
+            <input id="Distancia" type="text" placeholder="Distancia" />
+        </li>
+        <li>
+            <input id="Style" type="text" placeholder="Style" />
+        </li>
+    </ul>
+
 </div>
 
 
 <%
     Crud_List lista1 = new Crud_List();
     Crud_Athele athele = new Crud_Athele();
-    if (lista1.findAll().get(0).getAthele0().equals("Asistio")) {
+    Crud_Coach crr = new Crud_Coach();
 
-        out.println("<h1> " + athele.findAll().get(0).getName() + "  " + athele.findAll().get(0).getLastname() + "</h1>");
+    int[] temp2 = new int[6];
+    int y = 0;
+
+    HttpSession misession1 = request.getSession(true);
+    String h = String.valueOf(misession1.getAttribute("Role"));
+
+    HttpSession misession2 = request.getSession(true);
+    String h1 = String.valueOf(misession2.getAttribute("v"));
+    int identifiquer = Integer.parseInt(h1);
+
+    Date date = new Date();
+    DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    System.out.println("Hora y fecha: " + hourdateFormat.format(date));
+    String fecha_y_hora = hourdateFormat.format(date);
+
+    for (int i = 0; i < lista1.findAll().size(); i++) {
+
+        if (lista1.findAll().get(i).getDate().equals(fecha_y_hora) || lista1.findAll().get(i).getCoach_Name().equals(crr.findAll().get(identifiquer).getName() + " " + crr.findAll().get(identifiquer).getLastname()) || lista1.findAll().get(i).getJornada().equals(h)) {
+            temp2[y] = i;
+            y++;
+        }
+
+    }
+
+    if (lista1.findAll().get(temp2[0]).getAthele0().equals("Asistio")) {
+
+        out.println("<h1> " + lista1.findAll().get(temp2[0]).getName_Athele0() + "</h1>");
 
 
 %>
@@ -93,10 +123,9 @@
 
 
 <%
-    Crud_List lista2 = new Crud_List();
-    if (lista2.findAll().get(0).getAthele1().equals("Asistio")) {
-        out.println("<h1> " + athele.findAll().get(1).getName() + "  " + athele.findAll().get(1).getLastname() + "</h1>");
+    if (lista1.findAll().get(temp2[1]).getAthele0().equals("Asistio")) {
 
+        out.println("<h1> " + lista1.findAll().get(temp2[1]).getName_Athele0() + "</h1>");
 
 %>
 
@@ -124,10 +153,9 @@
 %>
 
 <%
-    Crud_List lista3 = new Crud_List();
-    if (lista3.findAll().get(0).getAthele2().equals("Asistio")) {
-        out.println("<h1> " + athele.findAll().get(2).getName() + "  " + athele.findAll().get(2).getLastname() + "</h1>");
+    if (lista1.findAll().get(temp2[2]).getAthele0().equals("Asistio")) {
 
+        out.println("<h1> " + lista1.findAll().get(temp2[2]).getName_Athele0() + "</h1>");
 
 %>
 
@@ -155,11 +183,9 @@
 %>
 
 <%
-    Crud_List lista4 = new Crud_List();
-    if (lista4.findAll().get(0).getAthele3().equals("Asistio")) {
+    if (lista1.findAll().get(temp2[3]).getAthele0().equals("Asistio")) {
 
-        out.println("<h1> " + athele.findAll().get(3).getName() + "  " + athele.findAll().get(3).getLastname() + "</h1>");
-
+        out.println("<h1> " + lista1.findAll().get(temp2[3]).getName_Athele0() + "</h1>");
 %>
 
 <div id="contenedor4">
@@ -186,10 +212,9 @@
 %>
 
 <%
-    Crud_List lista5 = new Crud_List();
-    if (lista5.findAll().get(0).getAthele4().equals("Asistio")) {
-        out.println("<h1> " + athele.findAll().get(4).getName() + "  " + athele.findAll().get(4).getLastname() + "</h1>");
+    if (lista1.findAll().get(temp2[4]).getAthele0().equals("Asistio")) {
 
+        out.println("<h1> " + lista1.findAll().get(temp2[4]).getName_Athele0() + "</h1>");
 
 %>
 
@@ -218,10 +243,9 @@
 
 
 <%
-    Crud_List lista6 = new Crud_List();
-    if (lista6.findAll().get(0).getAthele5().equals("Asistio")) {
-        out.println("<h1> " + athele.findAll().get(5).getName() + "  " + athele.findAll().get(5).getLastname() + "</h1>");
+    if (lista1.findAll().get(temp2[5]).getAthele0().equals("Asistio")) {
 
+        out.println("<h1> " + lista1.findAll().get(temp2[5]).getName_Athele0() + "</h1>");
 
 %>
 <div id="contenedor6">
@@ -251,13 +275,13 @@
 
 <div id="login">
 
- 
-        <ul>
-            <li>
-                <input id="finalizar" type="submit" value="Finalizar" />
-            </li>
-        </ul>
-   
+
+    <ul>
+        <li>
+            <input id="finalizar" type="submit" value="Finalizar" />
+        </li>
+    </ul>
+
 </div>
 
 
