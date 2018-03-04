@@ -113,7 +113,7 @@
 
 
         <div id="login" >
-            <form>
+            
                 <ul>
 
                     <%
@@ -134,7 +134,7 @@
 
                     </li>
                 </ul>
-            </form>
+           
         </div>
 
 

@@ -10,16 +10,52 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+
+
+        <%
+
+            HttpSession misession = request.getSession(true);
+
+            if (misession.getAttribute("usuario") == "Entrenador") {
+                response.sendRedirect("Coach.jsp");
+            }
+
+
+        %>
+
+
+
+        <script>
+            $(document).ready(function () {
+                $('#sesionclose').click(function (event) {
+                    $.ajax({
+                        url: "Athlete_Servlet",
+                        data: {Temp: "close"},
+                        type: "POST",
+                        success: function (respuesta) {
+                            if (respuesta.trim() == "close") {
+                                window.location.replace("Login.jsp");
+                            }
+
+
+                        }
+                    });
+                });
+            });
+
+        </script>
+
+
+
     </head>
     <body>
         <h1>Welcome Athlete!</h1>
 
     <center>
-        <%
-
-            Register reg = new Register();
+        <%            Register reg = new Register();
             int identifiquer = reg.getTemp();
             Crud_Athele crr2 = new Crud_Athele();
 
@@ -48,6 +84,17 @@
         %>
 
     </center>
+
+    <div id="login">
+
+
+        <ul>
+            <li>
+                <input id="sesionclose" type="submit" value="Cerrar sesion" />
+            </li>
+        </ul>
+
+    </div>
 
 
 

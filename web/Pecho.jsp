@@ -49,7 +49,7 @@
 
 
 <div id="login1">
-    <form>
+   
         <ul>
             <li>
                 <input id="Cantidad" type="text" placeholder="Cantidad" />
@@ -61,7 +61,7 @@
                 <input id="Style" type="text" placeholder="Style" />
             </li>
         </ul>
-    </form>
+   
 </div>
 
 
@@ -252,13 +252,13 @@
 
 <div id="login">
 
-    <form>
+  
         <ul>
             <li>
                 <input id="finalizar" type="submit" value="Finalizar" />
             </li>
         </ul>
-    </form>
+    
 </div>
 
 

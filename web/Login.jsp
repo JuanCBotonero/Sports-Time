@@ -1,5 +1,5 @@
 
-<%@page import="Datos.Register"%>
+<%@page import="Dao.Crud_Coach"%>
 <html lang="en">
     <head>
         <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
@@ -17,6 +17,36 @@
         <script src="Script/script1.js" type="text/javascript"></script>
         <link rel="stylesheet" href="CSS/style.css">
 
+
+        <%
+
+            HttpSession misession = request.getSession(true);
+
+            if (misession.getAttribute("usuario") != null) {
+
+                if (misession.getAttribute("usuario") == "Entrenador") {
+
+                    response.sendRedirect("Coach.jsp");
+
+                } else if (misession.getAttribute("usuario") == "Deportista") {
+                    response.sendRedirect("Athlete.jsp");
+
+                }
+
+            }
+
+        %>
+
+
+
+
+
+
+
+
+
+
+
         <script>
             $(document).ready(function () {
                 $('#login1').click(function (event) {
@@ -32,6 +62,7 @@
                         success: function (respuesta) {
 
                             console.log(respuesta);
+
 
 
                             if (respuesta.trim() == "Entrenador") {
@@ -59,6 +90,8 @@
                     var Lastname = $('#Lastname2').val();
                     var Password = $('#Password21').val();
                     var Identification_Card = $('#Identification_Card2').val();
+                    var Coach = $('#Coach1').val();
+                    var Jornada = $('#jornada').val();
                     var Genre = $('#Genre2').val();
                     var Born_Date = $('#Born_Date2').val();
                     var Height = $('#Height2').val();
@@ -72,14 +105,26 @@
                     var Emergency_Number = $('#Emergency_Number2').val();
                     var Allergies = $('#Allergies2').val();
                     var Diseases = $('#Diseases2').val();
-                    alert(Name);
+                    alert(Coach);
                     // Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
                     $.ajax({
                         url: "Login_Servlet",
-                        data: {Temp: Temp, Name: Name, Lastname: Lastname, Password: Password, Identification_Card: Identification_Card, Genre: Genre, Born_Date: Born_Date, Height: Height, weight: weight, Category: Category, Cellphone: Cellphone, Role1: Role1, Role2: Role2, Description: Description, Eps: Eps, Emergency_Number: Emergency_Number, Allergies: Allergies, Diseases: Diseases},
+                        data: {Temp: Temp, Name: Name, Lastname: Lastname, Password: Password, Identification_Card: Identification_Card, Coach: Coach, Jornada: Jornada, Genre: Genre, Born_Date: Born_Date, Height: Height, weight: weight, Category: Category, Cellphone: Cellphone, Role1: Role1, Role2: Role2, Description: Description, Eps: Eps, Emergency_Number: Emergency_Number, Allergies: Allergies, Diseases: Diseases},
                         type: "POST",
                         success: function (respuesta) {
                             console.log(respuesta);
+
+
+                            if (respuesta.trim() == "Entrenador") {
+
+                                window.location.replace("Login.jsp");
+
+
+                            } else if (respuesta.trim() == "Deportista") {
+                                window.location.replace("Login.jsp");
+                            }
+
+
                         }
                     });
                 });
@@ -97,7 +142,12 @@
                     <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
     </head>
+
+
+
+
     <body>
+
         <div class
 
              ="container">
@@ -127,19 +177,19 @@
                         Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                         Maecenas sed diam eget risus varius bladit sit amet non
                     </p>
-                    <form>
-                        <ul>
-                            <li>
-                                <input id="username1" type="text" placeholder="Username" />
-                            </li>
-                            <li>
-                                <input id="password2" type="password" placeholder="Password" />
-                            </li>
-                            <li>
-                                <input id="login1" type="submit" value="Login" class ="button" />
-                            </li>
-                        </ul>
-                    </form>
+
+                    <ul>
+                        <li>
+                            <input id="username1" type="text" placeholder="Username" />
+                        </li>
+                        <li>
+                            <input id="password2" type="password" placeholder="Password" />
+                        </li>
+                        <li>
+                            <input id="login1" type="submit" value="Login" class ="button" />
+                        </li>
+                    </ul>
+
                 </div>
                 <!--/#login.form-action-->
                 <div id="register" class
@@ -150,66 +200,100 @@
                         You should totally sign up for our super awesome service.
                         It's what all the cool kids are doing nowadays.
                     </p>
-                    <form>
-                        <ul>
-                            <li>
-                                <input id="Name2" type="text" placeholder="Name" />
-                            </li>
-                            <li>
-                                <input id="Lastname2" type="text" placeholder="Lastname" />
-                            </li>
-                            <li>
-                                <input id="Password21" type="text" placeholder="Password" />
-                            </li>
-                            <li>
-                                <input id="Identification_Card2" type="text" placeholder="Identification_Card" />
-                            </li>
-                            <li>
-                                <input id="Genre2" type="text" placeholder="Genre" />
-                            </li>
-                            <li>
-                                <input id="Born_Date2" type="text" placeholder="Born_Date" />
-                            </li>
-                            <li>
-                                <input id="Height2" type="text" placeholder="Height" />
-                            </li>
-                            <li>
-                                <input id="weight2" type="text" placeholder="weight" />
-                            </li>
-                            <li>
-                                <input id="Category2" type="text" placeholder="Category" />
-                            </li>
-                            <li>
-                                <input id="Cellphone2" type="text" placeholder="Cellphone" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="Role1" value="Role_Entrenador" onClick="value = 1"/>Entrenador
-                            </li>
-                            <li>
-                                <input type="checkbox" id="Role2" value="Role_Deportista" onClick="value = 2"/>Deportista
-                            </li>
-                            <li>
-                                <input id="Description2" type="text" placeholder="Description" />
-                            </li>
-                            <li>
-                                <input id="Eps2" type="text" placeholder="Eps" />
-                            </li>
-                            <li>
-                                <input id="Emergency_Number2" type="text" placeholder="Emergency_Number" />
-                            </li>
-                            <li>
-                                <input id="Allergies2" type="text" placeholder="Allergies" />
-                            </li>
-                            <li>
-                                <input id="Diseases2" type="text" placeholder="Diseases" />
-                            </li>
-                            <li>
-                                <input id="register1" type="submit" value="Sign Up" class
 
-                                       ="button" />
-                            </li>
-                        </ul>
-                    </form>
+                    <ul>
+                        <li>
+                            <input id="Name2" type="text" placeholder="Name" />
+                        </li>
+                        <li>
+                            <input id="Lastname2" type="text" placeholder="Lastname" />
+                        </li>
+                        <li>
+                            <input id="Password21" type="text" placeholder="Password" />
+                        </li>
+                        <li>
+                            <input id="Identification_Card2" type="text" placeholder="Identification_Card" />
+                        </li>
+                        <p>
+                            Select your Coach
+                        </p>
+                        <select id="Coach1" name="OS">
+                            <%                                Crud_Coach crr2 = new Crud_Coach();
+                                for (int i = 0; i < crr2.findAll().size(); i++) {
+                            %>
+
+
+                            <option value="<%=crr2.findAll().get(i).getName() + " " + crr2.findAll().get(i).getLastname()%>"  ><%=crr2.findAll().get(i).getName() + " " + crr2.findAll().get(i).getLastname()%>  </option>
+                            <%
+                                }
+                            %>
+
+                        </select>
+                        <p>
+                            Working day
+                        </p>
+
+                        <select id="jornada" name="OS">
+                            <%
+                                String[] temp2 = new String[2];
+                                temp2[0] = "Mañana";
+                                temp2[1] = "Tarde";
+                                for (int i = 0; i < temp2.length; i++) {
+                            %>
+
+
+                            <option value="<%=temp2[i]%>"  ><%=temp2[i]%>  </option>
+                            <%
+                                }
+                            %>
+
+                        </select>
+                        <li>
+                            <input id="Genre2" type="text" placeholder="Genre" />
+                        </li>
+                        <li>
+                            <input id="Born_Date2" type="text" placeholder="Born_Date" />
+                        </li>
+                        <li>
+                            <input id="Height2" type="text" placeholder="Height" />
+                        </li>
+                        <li>
+                            <input id="weight2" type="text" placeholder="weight" />
+                        </li>
+                        <li>
+                            <input id="Category2" type="text" placeholder="Category" />
+                        </li>
+                        <li>
+                            <input id="Cellphone2" type="text" placeholder="Cellphone" />
+                        </li>
+                        <li>
+                            <input type="checkbox" id="Role1" value="Role_Entrenador" onClick="value = 1"/>Entrenador
+                        </li>
+                        <li>
+                            <input type="checkbox" id="Role2" value="Role_Deportista" onClick="value = 2"/>Deportista
+                        </li>
+                        <li>
+                            <input id="Description2" type="text" placeholder="Description" />
+                        </li>
+                        <li>
+                            <input id="Eps2" type="text" placeholder="Eps" />
+                        </li>
+                        <li>
+                            <input id="Emergency_Number2" type="text" placeholder="Emergency_Number" />
+                        </li>
+                        <li>
+                            <input id="Allergies2" type="text" placeholder="Allergies" />
+                        </li>
+                        <li>
+                            <input id="Diseases2" type="text" placeholder="Diseases" />
+                        </li>
+                        <li>
+                            <input id="register1" type="submit" value="Sign Up" class
+
+                                   ="button" />
+                        </li>
+                    </ul>
+
                 </div>
                 <!--/#register.form-action-->
                 <div id="reset" class
@@ -220,21 +304,21 @@
                         To reset your password enter your email and your birthday
                         and we'll send you a link to reset your password.
                     </p>
-                    <form>
-                        <ul>
-                            <li>
-                                <input type="text" placeholder="Email" />
-                            </li>
-                            <li>
-                                <input type="text" placeholder="Birthday" />
-                            </li>
-                            <li>
-                                <input type="submit" value="Send" class
 
-                                       ="button" />
-                            </li>
-                        </ul>
-                    </form>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Email" />
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Birthday" />
+                        </li>
+                        <li>
+                            <input type="submit" value="Send" class
+
+                                   ="button" />
+                        </li>
+                    </ul>
+
                 </div>
                 <!--/#register.form-action-->
             </div>

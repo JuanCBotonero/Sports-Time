@@ -37,6 +37,8 @@ public class Crud_Athele {
             String Lastname = null;
             String Password = null;
             String Identification_Card = null;
+            String Coach = null;
+            String Jornada = null;
             String Genre = null;
             String Born_Date = null;
             String Height = null;
@@ -68,6 +70,12 @@ public class Crud_Athele {
 
                 Identification_Card = rs.getString("Identification_Card");
                 registro.setIdentification_Card(Identification_Card);
+
+                Coach = rs.getString("Coach");
+                registro.setCoach(Coach);
+
+                Jornada = rs.getString("Jornada");
+                registro.setJornada(Jornada);
 
                 Genre = rs.getString("Genre");
                 registro.setGenre(Genre);
@@ -121,7 +129,7 @@ public class Crud_Athele {
     public boolean insert(Register t) throws SQLException {
         boolean result = false;
         Connection connection = Conexion.getConnection();
-        String query = " insert into Athele_Register (Name,Lastname,Password1,Identification_Card,Genre,Born_Date,Height,weight,Category,Cellphone,Role,Description,Eps,Emergency_Number,Allergies,Diseases)" + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = " insert into Athele_Register (Name,Lastname,Password1,Identification_Card,Coach,Jornada,Genre,Born_Date,Height,weight,Category,Cellphone,Role,Description,Eps,Emergency_Number,Allergies,Diseases)" + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStmt = null;
 
         try {
@@ -131,18 +139,20 @@ public class Crud_Athele {
             preparedStmt.setString(2, t.getLastname());
             preparedStmt.setString(3, t.getPassword());
             preparedStmt.setString(4, t.getIdentification_Card());
-            preparedStmt.setString(5, t.getGenre());
-            preparedStmt.setString(6, t.getBorn_Date());
-            preparedStmt.setString(7, t.getHeight());
-            preparedStmt.setString(8, t.getWeight());
-            preparedStmt.setString(9, t.getCategory());
-            preparedStmt.setString(10, t.getCellphone());
-            preparedStmt.setString(11, t.getRole());
-            preparedStmt.setString(12, t.getDescription());
-            preparedStmt.setString(13, t.getEps());
-            preparedStmt.setString(14, t.getEmergency_Number());
-            preparedStmt.setString(15, t.getAllergies());
-            preparedStmt.setString(16, t.getDiseases());
+            preparedStmt.setString(5, t.getCoach());
+            preparedStmt.setString(6, t.getJornada());
+            preparedStmt.setString(7, t.getGenre());
+            preparedStmt.setString(8, t.getBorn_Date());
+            preparedStmt.setString(9, t.getHeight());
+            preparedStmt.setString(10, t.getWeight());
+            preparedStmt.setString(11, t.getCategory());
+            preparedStmt.setString(12, t.getCellphone());
+            preparedStmt.setString(13, t.getRole());
+            preparedStmt.setString(14, t.getDescription());
+            preparedStmt.setString(15, t.getEps());
+            preparedStmt.setString(16, t.getEmergency_Number());
+            preparedStmt.setString(17, t.getAllergies());
+            preparedStmt.setString(18, t.getDiseases());
 
             result = preparedStmt.execute();
         } catch (SQLException e) {
@@ -150,6 +160,5 @@ public class Crud_Athele {
         }
         return result;
     }
-
 
 }

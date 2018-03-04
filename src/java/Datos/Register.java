@@ -15,6 +15,8 @@ public class Register {
     private String Lastname;
     private String Password;
     private String Identification_Card;
+    private String Coach;
+    private String Jornada;
     private String Genre;
     private String Born_Date;
     private String Height;
@@ -29,12 +31,13 @@ public class Register {
     private String Diseases;
     private int temp;
 
-
-    public Register(String Name, String Lastname, String Password, String Identification_Card, String Genre, String Born_Date, String Height, String weight, String Category, String Cellphone, String Role, String Description, String Eps, String Emergency_Number, String Allergies, String Diseases) {
+    public Register(String Name, String Lastname, String Password, String Identification_Card, String Coach, String Jornada, String Genre, String Born_Date, String Height, String weight, String Category, String Cellphone, String Role, String Description, String Eps, String Emergency_Number, String Allergies, String Diseases) {
         this.Name = Name;
         this.Lastname = Lastname;
         this.Password = Password;
         this.Identification_Card = Identification_Card;
+        this.Coach = Coach;
+        this.Jornada = Jornada;
         this.Genre = Genre;
         this.Born_Date = Born_Date;
         this.Height = Height;
@@ -47,6 +50,7 @@ public class Register {
         this.Emergency_Number = Emergency_Number;
         this.Allergies = Allergies;
         this.Diseases = Diseases;
+
     }
 
     public Register() {
@@ -82,6 +86,22 @@ public class Register {
 
     public void setIdentification_Card(String Identification_Card) {
         this.Identification_Card = Identification_Card;
+    }
+
+    public String getCoach() {
+        return Coach;
+    }
+
+    public void setCoach(String Coach) {
+        this.Coach = Coach;
+    }
+
+    public String getJornada() {
+        return Jornada;
+    }
+
+    public void setJornada(String Jornada) {
+        this.Jornada = Jornada;
     }
 
     public String getGenre() {
@@ -187,10 +207,5 @@ public class Register {
     public void setTemp(int temp) {
         this.temp = temp;
     }
-    
-    
-    
-    
-    
-    
+
 }
