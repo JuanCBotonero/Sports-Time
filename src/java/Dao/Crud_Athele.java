@@ -79,7 +79,8 @@ public class Crud_Athele {
 
                 Genre = rs.getString("Genre");
                 registro.setGenre(Genre);
-
+               
+                
                 Born_Date = rs.getString("Born_Date");
                 registro.setBorn_Date(Born_Date);
 

@@ -19,6 +19,11 @@ public class Athlete_Servlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String temp = request.getParameter("Temp");
+        
+         if (temp.equals("uniquegraph")) {
+      
+            out.println("uniquegraph");
+        }
 
         if (temp.equals("close")) {
             HttpSession misession = request.getSession(true);

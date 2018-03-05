@@ -21,26 +21,28 @@
                 $('#listar1').click(function (event) {
 
 
-                    var Name_Athele0 = $('#Name_Athele0').val();
+                    var Name_Athele0 = document.getElementById("Name_Athele0").innerHTML;
                     var Athele0 = $('#Athele0').val();
 
-                    var Name_Athele1 = $('#Name_Athele1').val();
+                    var Name_Athele1 = document.getElementById("Name_Athele1").innerHTML;
                     var Athele1 = $('#Athele1').val();
 
-                    var Name_Athele2 = $('#Name_Athele2').val();
+                    var Name_Athele2 = document.getElementById("Name_Athele2").innerHTML;
                     var Athele2 = $('#Athele2').val();
 
-                    var Name_Athele3 = $('#Name_Athele3').val();
+                    var Name_Athele3 = document.getElementById("Name_Athele3").innerHTML;
                     var Athele3 = $('#Athele3').val();
 
-                    var Name_Athele4 = $('#Name_Athele4').val();
+                    var Name_Athele4 = document.getElementById("Name_Athele4").innerHTML;
                     var Athele4 = $('#Athele4').val();
 
-                    var Name_Athele5 = $('#Name_Athele5').val();
+                    var Name_Athele5 = document.getElementById("Name_Athele5").innerHTML;
                     var Athele5 = $('#Athele5').val();
 
-                    var Coach_Name = $('#Coach_Name').val();
-                    var Jornada = $('#Jornada').val();
+                    var Coach_Name = document.getElementById("Coach_Name").innerHTML;
+                    var Jornada = document.getElementById("Jornada").innerHTML;
+
+
 
                     $.ajax({
                         url: "Attendance_Servlet",
@@ -80,6 +82,7 @@
             int[] temp2 = new int[6];
             int y = 0;
 
+
             for (int i = 0; i < crr2.findAll().size(); i++) {
 
                 if (crr2.findAll().get(i).getCoach().equals(crr.findAll().get(identifiquer).getName() + " " + crr.findAll().get(identifiquer).getLastname()) && crr2.findAll().get(i).getJornada().equals(h)) {
@@ -93,10 +96,10 @@
 
 
 
-        <label type="texto" id="Coach_Name" value="<%=crr.findAll().get(identifiquer).getName() + " " + crr.findAll().get(identifiquer).getLastname()%>">Welcome Coach <%=crr.findAll().get(identifiquer).getName() + " " + crr.findAll().get(identifiquer).getLastname()%></label>
+        <label type="text" id="Coach_Name" value="<%=crr.findAll().get(identifiquer).getName() + " " + crr.findAll().get(identifiquer).getLastname()%>"><%=crr.findAll().get(identifiquer).getName() + " " + crr.findAll().get(identifiquer).getLastname()%></label>
         <p></p>
 
-        <label type="texto" id="Jornada" value="<%=h%>">Working day <%=h%></label>
+        <label type="texto" id="Jornada" value="<%=h%>"><%=h%></label>
         <p></p>
 
         1 <label type="texto" id="Name_Athele0" value="<%=crr2.findAll().get(temp2[0]).getName() + " " + crr2.findAll().get(temp2[0]).getLastname()%>"><%=crr2.findAll().get(temp2[0]).getName() + " " + crr2.findAll().get(temp2[0]).getLastname()%></label>

@@ -1,4 +1,5 @@
 
+<%@page import="org.apache.commons.codec.digest.DigestUtils"%>
 <%@page import="Dao.Crud_Coach"%>
 <html lang="en">
     <head>
@@ -54,6 +55,9 @@
                     var Temp = "1";
                     var username1 = $('#username1').val();
                     var password2 = $('#password2').val();
+
+       
+
                     alert(username1);
                     $.ajax({
                         url: "Login_Servlet",

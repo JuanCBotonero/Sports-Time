@@ -31,6 +31,7 @@ public class Coach_Servlet extends HttpServlet {
                 HttpSession misession = request.getSession(true);
                 misession.setAttribute("Role", "Tarde");
                 
+                
             }
 
             out.println("list");

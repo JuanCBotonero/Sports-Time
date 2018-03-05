@@ -105,6 +105,29 @@
         </script>
 
 
+        <script>
+            $(document).ready(function () {
+                $('#sesionclose').click(function (event) {
+                    $.ajax({
+                        url: "Coach_Servlet",
+                        data: {Temp: "close"},
+                        type: "POST",
+                        success: function (respuesta) {
+                            if (respuesta.trim() == "close") {
+                                window.location.replace("Login.jsp");
+                            }
+
+
+                        }
+                    });
+                });
+            });
+
+        </script>
+
+
+
+
 
     </head>
     <body>
@@ -113,28 +136,31 @@
 
 
         <div id="login" >
-            
-                <ul>
 
-                    <%
-                        Crud_Athele lista = new Crud_Athele();
+            <ul>
 
-
-                    %>
+                <%
+                    Crud_Athele lista = new Crud_Athele();
 
 
-                    <input type="submit" id="Espalda" value="Espalda" onClick="value = 1"/>  
-                    <p></p>
-                    <input type="submit" id="Libre" value="Libre" onClick="value = 1"/>
-                    <p></p>
-                    <input type="submit" id="Pecho" value="Pecho" onClick="value = 1"/> 
+                %>
+
+
+                <input type="submit" id="Espalda" value="Espalda" onClick="value = 1"/>  
+                <p></p>
+                <input type="submit" id="Libre" value="Libre" onClick="value = 1"/>
+                <p></p>
+                <input type="submit" id="Pecho" value="Pecho" onClick="value = 1"/> 
+                <p></p>
+                <input id="sesionclose" type="submit" value="Cerrar sesion" />
 
 
 
 
-                    </li>
-                </ul>
-           
+
+
+            </ul>
+
         </div>
 
 

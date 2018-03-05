@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class Login_Servlet extends HttpServlet {
 
@@ -31,16 +32,17 @@ public class Login_Servlet extends HttpServlet {
 
             Crud_Coach crr = new Crud_Coach();
             Crud_Athele crr2 = new Crud_Athele();
-            
-           
 
             try {
 
                 String UserName = request.getParameter("username1");
                 String Password = request.getParameter("password");
+                String textoEncriptadoConMD5 = DigestUtils.md5Hex(Password);
+                System.out.println("Texto Encriptado con MD5 : " + textoEncriptadoConMD5);
+
                 for (int i = 0; i < crr.findAll().size(); i++) {
 
-                    if (Password.equals(crr.findAll().get(i).getPassword())) {
+                    if (textoEncriptadoConMD5.equals(crr.findAll().get(i).getPassword())) {
                         Register reg = new Register();
                         reg.setTemp(i);
                         misession.setAttribute("usuario", "Entrenador");
@@ -53,10 +55,11 @@ public class Login_Servlet extends HttpServlet {
 
                 for (int i = 0; i < crr2.findAll().size(); i++) {
 
-                    if (Password.equals(crr2.findAll().get(i).getPassword())) {
+                    if (textoEncriptadoConMD5.equals(crr2.findAll().get(i).getPassword())) {
                         Register reg = new Register();
                         reg.setTemp(i);
                         misession.setAttribute("usuario", "Deportista");
+                        misession.setAttribute("v", i);
                         out.println("Deportista");
 
                     }
@@ -72,6 +75,10 @@ public class Login_Servlet extends HttpServlet {
             String Name = request.getParameter("Name");
             String Lastname = request.getParameter("Lastname");
             String Password = request.getParameter("Password");
+
+            String textoEncriptadoConMD5 = DigestUtils.md5Hex(Password);
+            System.out.println("Texto Encriptado con MD5 : " + textoEncriptadoConMD5);
+
             String Identification_Card = request.getParameter("Identification_Card");
             String Coach = request.getParameter("Coach");
             String Jornada = request.getParameter("Jornada");
@@ -93,7 +100,7 @@ public class Login_Servlet extends HttpServlet {
 
                 try {
 
-                    Register reg = new Register(Name, Lastname, Password, Identification_Card, Coach, Jornada, Genre, Born_Date, Height, weight, Category, Cellphone, Role1, Description, Eps, Emergency_Number, Allergies, Diseases);
+                    Register reg = new Register(Name, Lastname, textoEncriptadoConMD5, Identification_Card, Coach, Jornada, Genre, Born_Date, Height, weight, Category, Cellphone, Role1, Description, Eps, Emergency_Number, Allergies, Diseases);
                     System.out.println(Name);
                     Crud_Coach crr = new Crud_Coach();
                     crr.insert(reg);
@@ -106,7 +113,7 @@ public class Login_Servlet extends HttpServlet {
             } else if (Role2.equals("2")) {   //athlete
 
                 try {
-                    Register reg = new Register(Name, Lastname, Password, Identification_Card, Coach, Jornada, Genre, Born_Date, Height, weight, Category, Cellphone, Role2, Description, Eps, Emergency_Number, Allergies, Diseases);
+                    Register reg = new Register(Name, Lastname, textoEncriptadoConMD5, Identification_Card, Coach, Jornada, Genre, Born_Date, Height, weight, Category, Cellphone, Role2, Description, Eps, Emergency_Number, Allergies, Diseases);
                     Crud_Athele crr2 = new Crud_Athele();
                     crr2.insert(reg);
                     out.println("Deportista");

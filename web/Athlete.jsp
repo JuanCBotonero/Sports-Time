@@ -47,6 +47,28 @@
             });
 
         </script>
+        
+          <script>
+            $(document).ready(function () {
+                $('#grafica_unica').click(function (event) {
+                    
+                    
+                    $.ajax({
+                        url: "Athlete_Servlet",
+                        data: {Temp: "uniquegraph"},
+                        type: "POST",
+                        success: function (respuesta) {
+                            if (respuesta.trim() == "uniquegraph") {
+                                window.location.replace("uniquegraph.jsp");
+                            }
+
+
+                        }
+                    });
+                });
+            });
+
+        </script>
 
 
 
@@ -55,13 +77,20 @@
         <h1>Welcome Athlete!</h1>
 
     <center>
-        <%            Register reg = new Register();
-            int identifiquer = reg.getTemp();
+        <%            
+                     
+                       
             Crud_Athele crr2 = new Crud_Athele();
+            HttpSession misession1 = request.getSession(true);
+            String h = String.valueOf(misession1.getAttribute("v"));
+            int identifiquer = Integer.parseInt(h);
+            
 
             out.println("<h1> " + crr2.findAll().get(identifiquer).getName() + "</h1>");
             out.println("<h1> " + crr2.findAll().get(identifiquer).getLastname() + "</h1>");
             out.println("<h1> " + crr2.findAll().get(identifiquer).getIdentification_Card() + "</h1>");
+            out.println("<h1> " + crr2.findAll().get(identifiquer).getCoach()+ "</h1>");
+            out.println("<h1> " + crr2.findAll().get(identifiquer).getJornada()+ "</h1>");     
             out.println("<h1> " + crr2.findAll().get(identifiquer).getGenre() + "</h1>");
             out.println("<h1> " + crr2.findAll().get(identifiquer).getBorn_Date() + "</h1>");
             out.println("<h1> " + crr2.findAll().get(identifiquer).getHeight() + "</h1>");
@@ -90,8 +119,12 @@
 
         <ul>
             <li>
+                <input id="grafica_unica" type="submit" value="Grafica de rendimiento" />
+            </li>
+            <li>
                 <input id="sesionclose" type="submit" value="Cerrar sesion" />
             </li>
+
         </ul>
 
     </div>
