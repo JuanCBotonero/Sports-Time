@@ -25,6 +25,25 @@
 
     </script>
 
+
+    <script>
+        $(document).ready(function () {
+            $('#perfil').click(function (event) {
+                window.location.replace("Athlete.jsp");
+
+                $.ajax({
+                    success: function (respuesta) {
+
+
+
+                    }
+                });
+            });
+        });
+
+    </script>
+
+
     <style>
         .caja{
             margin: auto;
@@ -56,6 +75,9 @@
         <ul>
             <li>
                 <input id="volver" type="submit" value="Volver" />
+            </li>
+            <li>
+                <input id="perfil" type="submit" value="Perfil" />
             </li>
 
 
